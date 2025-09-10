@@ -21,20 +21,28 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        if (Settings.canDrawOverlays(this)) {
-            val intent = Intent(this, OverlayService::class.java)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                startForegroundService(intent)
-            } else {
-                startService(intent)
-            }
+        val intent = Intent(this, OverlayService::class.java)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(intent) // requires startForeground() in service
         } else {
-            val intent = Intent(
-                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                Uri.parse("package:$packageName")
-            )
-            startActivity(intent)
+            startService(intent)
         }
+
+
+        /* if (Settings.canDrawOverlays(this)) {
+             val intent = Intent(this, OverlayService::class.java)
+             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                 startForegroundService(intent)
+             } else {
+                 startService(intent)
+             }
+         } else {
+             val intent = Intent(
+                 Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                 Uri.parse("package:$packageName")
+             )
+             startActivity(intent)
+         }*/
 
 
 
