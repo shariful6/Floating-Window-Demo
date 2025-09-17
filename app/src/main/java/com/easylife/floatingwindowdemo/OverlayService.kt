@@ -72,10 +72,10 @@ class OverlayService : Service() {
                     WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
             PixelFormat.TRANSLUCENT
         )
-        params.gravity = Gravity.TOP
+        params.gravity = Gravity.CENTER
 
         val textView = TextView(this).apply {
-            text = "🔔 Overlay Banner Working!"
+            text = "🔔 এই মোবাইল টি কিস্তিতে কেনা !"
             textSize = 18f
             setBackgroundColor(Color.BLACK)
             setTextColor(Color.WHITE)
